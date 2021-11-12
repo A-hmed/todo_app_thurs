@@ -7,10 +7,15 @@ class MyThemeData{
     accentColor: Color.fromRGBO(184, 210, 180, 1.0),
    scaffoldBackgroundColor: Color(0xffb1cbaa),
   textTheme:TextTheme(
+
     headline1: TextStyle(
       fontSize:14,
       fontWeight: FontWeight.bold
-    )
+    ),
+        headline2: TextStyle(
+      fontSize:18,
+      fontWeight: FontWeight.w600
+  )
   ),
   );
       static ThemeData darkTheme=ThemeData(
@@ -22,6 +27,11 @@ class MyThemeData{
               color: Colors.white,
                 fontSize:14,
                 fontWeight: FontWeight.bold
+            ),
+            headline2: TextStyle(
+                color: Colors.white,
+                fontSize:18,
+                fontWeight: FontWeight.w600
             )
         ),
   );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/Home/AddTaskBottomSheet.dart';
 import 'package:todo_app/Home/ListTab/ListTab.dart';
 import 'package:todo_app/Home/SettingsTab/SettingsTab.dart';
 
@@ -29,12 +30,15 @@ class _HomeState extends State<Home> {
       floatingActionButtonLocation:FloatingActionButtonLocation.centerDocked ,
       floatingActionButton: FloatingActionButton(
         backgroundColor:Theme.of(context).primaryColor,
-        onPressed: (){},
+        onPressed: (){
+          showAddTaskBottomSheet();
+        },
         child:Icon(Icons.add,color: Colors.white,),
         shape: StadiumBorder(
             side: BorderSide(color:Colors.white, width: 4)),
       ),
       bottomNavigationBar: BottomAppBar(
+
         notchMargin: 8,
         clipBehavior:Clip.hardEdge,
         shape: CircularNotchedRectangle(),
@@ -42,7 +46,6 @@ class _HomeState extends State<Home> {
           onTap: (index){
             currentIndex=index;
             setState(() {
-
             });
           },
           currentIndex: currentIndex,
@@ -55,6 +58,12 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
+  }
+
+  void showAddTaskBottomSheet() {
+     showModalBottomSheet( elevation:100,clipBehavior:Clip.antiAlias,context: context, builder:(context){
+       return AddTaskBottomSheet();
+     } );
   }
 
 }
