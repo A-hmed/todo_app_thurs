@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:todo_app/Providers/AppConfigProvider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class ThemeBottomSheet extends StatefulWidget {
-  const ThemeBottomSheet({Key key}) : super(key: key);
 
   @override
   _ThemeBottomSheetState createState() => _ThemeBottomSheetState();
@@ -20,13 +19,13 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
             onTap: (){
               provider.setNewTheme(ThemeMode.light);
             },
-            child: getItemDesign(AppLocalizations.of(context).light,
+            child: getItemDesign(AppLocalizations.of(context)!.light,
                 provider.themeMode==ThemeMode.light)),
         InkWell(
             onTap: (){
               provider.setNewTheme(ThemeMode.dark);
             },
-            child: getItemDesign(AppLocalizations.of(context).dark,
+            child: getItemDesign(AppLocalizations.of(context)!.dark,
                 provider.themeMode==ThemeMode.dark)),
       ],
     );

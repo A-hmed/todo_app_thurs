@@ -5,7 +5,7 @@ import 'package:todo_app/Home/SettingsTab/SettingsTab.dart';
 
 class Home extends StatefulWidget {
   static final  ROUTE_NAME='Home';
-  const Home({Key key}) : super(key: key);
+
 
   @override
   _HomeState createState() => _HomeState();
@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
     //  body:
     appBar: AppBar(
       title: Text('To Do List'),
-      toolbarHeight: MediaQuery.of(context).size.height*.2,
+      toolbarHeight: MediaQuery.of(context).size.height*.1,
     ),
       floatingActionButtonLocation:FloatingActionButtonLocation.centerDocked ,
       floatingActionButton: FloatingActionButton(

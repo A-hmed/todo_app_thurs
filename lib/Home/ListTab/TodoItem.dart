@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_app/DataBase/FireBaseUtils.dart';
+import 'package:todo_app/DataBase/Models/Todo.dart';
 import 'package:todo_app/Providers/AppConfigProvider.dart';
+import 'package:todo_app/Providers/ListProvider.dart';
 
 class TodoItem extends StatelessWidget {
+  late Todo item;
+  TodoItem(this.item);
   @override
   Widget build(BuildContext context) {
+    ListProvider listProvider=Provider.of(context);
     AppConfigProvider provider=Provider.of(context);
     return Slidable(
 
@@ -26,8 +32,8 @@ class TodoItem extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Play basketBall',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 24,color: Theme.of(context).primaryColor) ,),
-                Text('Play basketBall',style:Theme.of(context).textTheme.headline2 )
+                Text(item.title,style:TextStyle(fontWeight: FontWeight.bold,fontSize: 24,color: Theme.of(context).primaryColor) ,),
+                Text(item.descreption,style:Theme.of(context).textTheme.headline2 )
               ],
             ),
             Spacer(),
@@ -48,19 +54,25 @@ class TodoItem extends StatelessWidget {
                   borderRadius: BorderRadius.only(
                       topRight: Radius.circular(12),
                       bottomRight: Radius.circular(12))),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.delete,
-                    color: Colors.white,
-                    size: 30,
-                  ),
-                  Text(
-                    'Delete',
-                    style: TextStyle(fontSize: 16, color: Colors.white),
-                  )
-                ],
+              child: InkWell(
+                onTap: (){
+                  getTodosRefWithConverters().doc(item.id).delete();
+                  listProvider.refreshTodo();
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.delete,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                    Text(
+                      'Delete',
+                      style: TextStyle(fontSize: 16, color: Colors.white),
+                    )
+                  ],
+                ),
               ),
             ),
           )

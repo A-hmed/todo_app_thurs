@@ -7,7 +7,6 @@ import 'package:todo_app/Providers/AppConfigProvider.dart';
 
 class SettingsTab extends StatefulWidget {
 
-  const SettingsTab({Key key}) : super(key: key);
 
   @override
   _SettingsTabState createState() => _SettingsTabState();
@@ -22,7 +21,7 @@ class _SettingsTabState extends State<SettingsTab> {
       children: [
         Container(
           margin: EdgeInsets.all(12),
-            child: Text(AppLocalizations.of(context).language,textAlign: TextAlign.start,
+            child: Text(AppLocalizations.of(context)!.language,textAlign: TextAlign.start,
               style:Theme.of(context).textTheme.headline1 ,)
         ),
         InkWell(
@@ -46,7 +45,7 @@ class _SettingsTabState extends State<SettingsTab> {
         ),
         Container(
             margin: EdgeInsets.all(12),
-            child: Text(AppLocalizations.of(context).mode,textAlign: TextAlign.start,
+            child: Text(AppLocalizations.of(context)!.mode,textAlign: TextAlign.start,
               style:Theme.of(context).textTheme.headline1 ,)
         ),
         InkWell(
@@ -62,8 +61,8 @@ class _SettingsTabState extends State<SettingsTab> {
             child: Row(
               children: [
                 Text(provider.themeMode==ThemeMode.light?
-                AppLocalizations.of(context).light:
-                AppLocalizations.of(context).dark  ),
+                AppLocalizations.of(context)!.light:
+                AppLocalizations.of(context)!.dark  ),
                 Spacer(),
                 Icon(Icons.arrow_downward_outlined)
               ],
